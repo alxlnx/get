@@ -13,8 +13,9 @@ GPIO.setup(dac, GPIO.OUT)
 
 PWM_PIN = 22
 GPIO.setup(PWM_PIN, GPIO.OUT)
+GPIO.setup(21, GPIO.OUT)
 
-p = GPIO.PWM(PWM_PIN, 0.5)
+p = GPIO.PWM(PWM_PIN, 1000)
 
 p.start(0.0)
 
@@ -23,7 +24,7 @@ try:
         D = float(input("Enter duty cycle: "))
         p.ChangeDutyCycle(D)
 
-        
+
 finally:
     [GPIO.output(pin, GPIO.LOW) for pin in dac]
     GPIO.cleanup()
