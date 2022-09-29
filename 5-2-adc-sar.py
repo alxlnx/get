@@ -39,7 +39,7 @@ try:
         dec_voltage = adc()
         voltage = dec_voltage * MAX_DAC_VOLTAGE / MAX_DAC_NUMBER
         print(f'Voltage on sig should be {voltage:.2f}V, and its correspomding dec number from dac is {dec_voltage}')
-        input("Go again?")
+       # input("Go again?")
 finally:
     GPIO.output(dac, GPIO.LOW)
     GPIO.output(troyka, GPIO.LOW)

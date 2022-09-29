@@ -37,7 +37,9 @@ def adc():
 def led_num(num):
     state = [0, 0, 0, 0, 0, 0, 0, 0]
 
-    for i in range(7, 7 - num + 1, -1):
+    if num == 0: return state
+
+    for i in range(7, 7 - num - 1, -1):
         state[i] = 1
     return state
 
