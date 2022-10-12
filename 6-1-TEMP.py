@@ -1,19 +1,18 @@
 #!/usr/bin/python3
 import RPi.GPIO as GPIO
 import time
-from mylib import dec2bin
-from mylib import adc
+from mylib import dec2bin, adc
+from mylib import dac, MAX_DAC_NUMBER, MAX_DAC_VOLTAGE, comp, troyka
 from matplotlib import pyplot
 
 # ---- SETUP ----
 GPIO.setmode(GPIO.BCM)
 
-dac = [26, 19, 13, 6, 5, 11, 9, 10]
-comp = 4
-troyka = 17
-
-MAX_DAC_VOLTAGE = 3.3
-MAX_DAC_NUMBER = 255
+# dac = [26, 19, 13, 6, 5, 11, 9, 10]
+# comp = 4
+# troyka = 17
+# MAX_DAC_VOLTAGE = 3.3
+# MAX_DAC_NUMBER = 255
 
 GPIO.setup(dac, GPIO.OUT)
 GPIO.setup(comp, GPIO.IN)

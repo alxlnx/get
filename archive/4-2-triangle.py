@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import RPi.GPIO as GPIO
-from small_lib import dec2bin
+from mylib import dec2bin
 import time
 
 GPIO.setmode(GPIO.BCM)
@@ -12,7 +12,7 @@ MAX_DAC_NUMBER = 255
 dac = [26, 19, 13, 6, 5, 11, 9, 10]
 GPIO.setup(dac, GPIO.OUT)
 
-T = float(input("Enter T: ")) / 2;
+T = float(input("Enter T: ")) / 2
 
 try:
     while (True):

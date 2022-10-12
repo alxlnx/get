@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import RPi.GPIO as GPIO
-from small_lib import dec2bin
+from mylib import dec2bin
 import time
 
 GPIO.setmode(GPIO.BCM)

@@ -2,7 +2,7 @@
 
 import RPi.GPIO as GPIO
 import time
-from small_lib import dec2bin
+from mylib import dec2bin
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
