@@ -20,7 +20,7 @@ def adc():
     L, R = 0, MAX_DAC_NUMBER
     while L < R:
         x = L + (R - L) // 2
-        GPIO.output(dac, dec2bin(x))
+        GPIO.output(dac, dec2bin(x))  # Show how algo works on dac leds
         time.sleep(0.005)
         comp_res = GPIO.input(comp)
         if comp_res == 0:
