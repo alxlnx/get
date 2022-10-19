@@ -75,7 +75,7 @@ try:
         dataf.write('\n'.join(capacitor_vals))
 
     sample_freq = 25
-    quant_step = max(capacitor_vals) / 80;
+    quant_step = max(capacitor_vals) / 80
     print(f'Sampling frequency: {sample_freq}, quantization step:{quant_step}, measuremnts duration: {duration}, period of single measuremnt: {sample_freq ** -1}')
 finally:
     GPIO.output(dac, GPIO.LOW)
