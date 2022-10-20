@@ -38,13 +38,14 @@ def adc():
 time0 = time.time()  # Capacitor has started to charge
 capacitor_sig_init = adc()
 print(f'Charging... Initial voltage on capacitor = {capacitor_sig_init}')
-GPIO.setup(troyka, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(troyka, GPIO.OUT, initial=GPIO.HIGH)
 # GPIO.output(troyka, GPIO.HIGH)
 
 try:
     capacitor_vals = []
     x = []
     i = 0
+    has_charged = False
     while True:
         capacitor_sig = adc()                      # Read current voltage on capacitor
         voltage = capacitor_sig * MAX_DAC_VOLTAGE / MAX_DAC_NUMBER
@@ -54,11 +55,12 @@ try:
         i = i + 1
         GPIO.output(leds, dec2bin(capacitor_sig))  # Indicate if capacitor is charging or discharging
 
-        if (capacitor_sig > 190):                   # Begin discharging
-            GPIO.output(troyka, GPIO.HIGH)          
+        if (capacitor_sig >= 83):                  # Begin discharging
+            has_charged = True
+            GPIO.output(troyka, GPIO.LOW)          
             print("Discharging...")
-        # if (capacitor_sig < 10):
-        #    break
+        if ((capacitor_sig < 5 and (has_charged is True)) or capacitor_sig == 0):
+            break
     
     time1 = time.time()                            # Stop measurements
     duration = time1 - time0
@@ -67,7 +69,7 @@ try:
     plt.title('Зависимость напряжения от номера измерения')
     plt.xlabel('Номер измерения')
     plt.grid('--')
-    plt.scatter(x, capacitor_vals, c=[0,0,0])
+    plt.scatter(x, capacitor_vals, c=[0,0,0], marker='+')
     plt.show()
 
     capacitor_vals = [str(item) for item in capacitor_vals]
@@ -75,7 +77,9 @@ try:
         dataf.write('\n'.join(capacitor_vals))
 
     sample_freq = 25
-    quant_step = max(capacitor_vals) / 80;
+    quant_step = float(max(capacitor_vals)) / 80
+    with open('settings.txt', 'w') as settingsf:
+        settingsf.write(f'{sample_freq}\n{quant_step}')
     print(f'Sampling frequency: {sample_freq}, quantization step:{quant_step}, measuremnts duration: {duration}, period of single measuremnt: {sample_freq ** -1}')
 finally:
     GPIO.output(dac, GPIO.LOW)
