@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-
 import numpy as np
 from matplotlib import pyplot as plt
 
-# Read data from text files:
+# Read data from text files
 data_array = np.loadtxt('data.txt', dtype=float)
 sampling_freq, quantization = np.loadtxt('settings.txt', dtype = float)
 # --------
@@ -11,15 +10,15 @@ sampling_freq, quantization = np.loadtxt('settings.txt', dtype = float)
 # Configure the graph
 GRAPH_WIDTH = 16    # inches
 GRAPH_HEIGHT = 10   # inches
-DPI = 400            # dots per inch
+DPI = 400           # dots per inch
 figure, axes = plt.subplots(figsize=(GRAPH_WIDTH, GRAPH_HEIGHT), dpi=DPI)
 
-axes.minorticks_on()                        # Enable tiny ticks
-axes.grid(which='major', linestyle='-', linewidth=0.5)    # 
+axes.minorticks_on()                                    # Enable tiny ticks
+axes.grid(which='major', linestyle='-', linewidth=0.5)     
 plt.grid(which='minor', linestyle='--', linewidth=0.3)
 
 font = {'fontname':'DejaVu Serif'}
-axes.set_title('Процесс заряда и разряда конденсатора в RC-цепочке', **font)
+axes.set_title('Процесс зарядки и разрядки конденсатора в RC-цепочке', **font)
 axes.set_ylabel('Напряжение, В', **font)
 axes.set_xlabel('Время, с', **font)
 # --------
