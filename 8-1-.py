@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import numpy as np
+from matplotlib import pyplot as plt
 
 # np.zeros(3)
 # np.ones(3)
@@ -43,7 +44,7 @@ import numpy as np
 data_array = np.loadtxt('data.txt', dtype=int)
 
 # figure -> axes -> ...
-from matplotlib import pyplot as plt
+
 fig, ax = plt.subplots(figsize=(16,10), dpi=400)  # figure, axes
 # width, height
 # nrows = how many axeses (graphs) on one fig

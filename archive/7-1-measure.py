@@ -77,13 +77,9 @@ try:
         dataf.write('\n'.join(capacitor_vals))
 
     sample_freq = 25
-<<<<<<< HEAD:7-1-measure.py
     quant_step = float(max(capacitor_vals)) / 80
     with open('settings.txt', 'w') as settingsf:
         settingsf.write(f'{sample_freq}\n{quant_step}')
-=======
-    quant_step = max(capacitor_vals) / 80
->>>>>>> 5cd5a299dc8f958db1fbee7c282334c466aa4e2f:archive/7-1-measure.py
     print(f'Sampling frequency: {sample_freq}, quantization step:{quant_step}, measuremnts duration: {duration}, period of single measuremnt: {sample_freq ** -1}')
 finally:
     GPIO.output(dac, GPIO.LOW)
