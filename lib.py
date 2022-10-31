@@ -15,6 +15,7 @@ def dec2bin(value):
     """ Return a list of size 8 containing binary representation of passed integer. """
     return [int(bit) for bit in bin(value)[2:].zfill(8)]
 
+# TODO: find out if that adc() thing actually works if imported from this file
 def adc():
     """ Return a decimal number proportional to voltage on S pin on troyka. """
     L, R = 0, MAX_DAC_NUMBER
